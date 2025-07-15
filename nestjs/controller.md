@@ -18,3 +18,27 @@ Use the NestJS CLI to generate a new controller:
 
 ```bash
 nest g controller <name>
+
+
+```bash
+import { Controller, Get, Post, Param, Body } from '@nestjs/common';
+
+@Controller('cats')
+export class CatsController {
+  
+  @Get()
+  findAll(): string {
+    return 'This action returns all cats';
+  }
+
+  @Get(':id')
+  findOne(@Param('id') id: string): string {
+    return `This action returns a cat with ID: ${id}`;
+  }
+
+  @Post()
+  create(@Body() createCatDto: any): string {
+    return `This action adds a new cat: ${JSON.stringify(createCatDto)}`;
+  }
+}
+
